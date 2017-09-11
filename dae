@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# description: xfreerdp daemon starts after xfreersp is started and connected terminates the system when the service is offline
+# Required-Start: xfreerdp
+#
+sleep 5
+while true
+do
+if pgrep -x "xfreerdp" > /dev/null
+then
+	echo "running"
+else
+	echo "service stopped"
+	/sbin/shutdown -h now
+fi
+done
